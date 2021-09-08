@@ -47,13 +47,14 @@ async fn run_client() -> io::Result<()> {
             let mut http = client::HttpConnector::new();
             http.enforce_http(false);
             // Build a TLS client, using the custom CA store for lookups.
-            let mut tls = rustls::ClientConfig::new();
+            let mut tls = tokio_rustls::rustls::ClientConfig::new();
             tls.root_store
                 .add_pem_file(rd)
                 .map_err(|_| error("failed to load custom CA store".into()))?;
             // Join the above part into an HTTPS connector.
             hyper_rustls::HttpsConnector::from((http, tls))
         }
+        
         // Default HTTPS connector.
         None => hyper_rustls::HttpsConnector::with_native_roots(),
     };

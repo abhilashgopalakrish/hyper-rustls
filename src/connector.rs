@@ -1,7 +1,7 @@
 #[cfg(feature = "tokio-runtime")]
 use hyper::client::connect::HttpConnector;
 use hyper::{client::connect::Connection, service::Service, Uri};
-use rustls::ClientConfig;
+use tokio_rustls::rustls::ClientConfig;
 use std::future::Future;
 use std::pin::Pin;
 use std::sync::Arc;

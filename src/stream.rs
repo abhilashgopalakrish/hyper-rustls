@@ -6,7 +6,7 @@ use std::task::{Context, Poll};
 
 use hyper::client::connect::{Connected, Connection};
 
-use rustls::Session;
+use tokio_rustls::rustls::Session;
 use tokio::io::{AsyncRead, AsyncWrite, ReadBuf};
 use tokio_rustls::client::TlsStream;
 

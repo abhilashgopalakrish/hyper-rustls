@@ -14,11 +14,13 @@ log = "0.4.4"
 ct-logs = { version = "^0.8", optional = true }
 hyper = { version = "0.14", default-features = false, features = ["client", "http1"] }
 # rustls = "0.19"
-rustls = {path="/Users/amit/rustls/rustls"}
-rustls-native-certs = { version = "0.5.0", optional = true }
+# rustls = {git = "https://github.com/amrx101/rustls", branch="hsm_tag_19"}
+# rustls = {path="/Users/amit/rustls/rustls"}
+# rustls-native-certs = { version = "0.5.0", optional = true }
 tokio = "1.0"
 # tokio-rustls = "0.22"
-tokio-rustls = {path="/Users/amit/tls/tokio-rustls"}
+# tokio-rustls = {path="/Users/amit/tls/tokio-rustls"}
+tokio-rustls = {git = "https://github.com/amrx101/tls.git", branch="hsm_tag_19"}
 webpki = "0.21.0"
 webpki-roots = { version = "0.21", optional = true }
 
@@ -29,9 +31,8 @@ hyper = { version = "0.14", features = ["full"] }
 futures-util = { version = "0.3.1", default-features = false }
 
 [features]
-default = ["native-tokio"]
 webpki-tokio = ["tokio-runtime", "webpki-roots"]
-native-tokio = ["tokio-runtime", "rustls-native-certs"]
+native-tokio = ["tokio-runtime"]
 tokio-runtime =  ["hyper/runtime", "ct-logs"]
 
 [[example]]

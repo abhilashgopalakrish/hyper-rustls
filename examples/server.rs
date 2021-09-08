@@ -9,7 +9,7 @@ use core::task::{Context, Poll};
 use futures_util::{future::TryFutureExt, stream::Stream};
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Body, Method, Request, Response, Server, StatusCode};
-use rustls::internal::pemfile;
+use tokio_rustls::rustls::internal::pemfile;
 use std::pin::Pin;
 use std::vec::Vec;
 use std::{env, fs, io, sync};
