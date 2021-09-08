@@ -28,23 +28,23 @@ pub struct HttpsConnector<T> {
 ))]
 impl HttpsConnector<HttpConnector> {
     /// Construct a new `HttpsConnector` using the OS root store
-    #[cfg(feature = "rustls-native-certs")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "rustls-native-certs")))]
-    pub fn with_native_roots() -> Self {
-        let mut config = ClientConfig::new();
-        config.root_store = match rustls_native_certs::load_native_certs() {
-            Ok(store) => store,
-            Err((Some(store), err)) => {
-                log::warn!("Could not load all certificates: {:?}", err);
-                store
-            }
-            Err((None, err)) => Err(err).expect("cannot access native cert store"),
-        };
-        if config.root_store.is_empty() {
-            panic!("no CA certificates found");
-        }
-        Self::build(config)
-    }
+    // #[cfg(feature = "rustls-native-certs")]
+    // #[cfg_attr(docsrs, doc(cfg(feature = "rustls-native-certs")))]
+    // pub fn with_native_roots() -> Self {
+    //     let mut config = ClientConfig::new();
+    //     config.root_store = match rustls_native_certs::load_native_certs() {
+    //         Ok(store) => store,
+    //         Err((Some(store), err)) => {
+    //             log::warn!("Could not load all certificates: {:?}", err);
+    //             store
+    //         }
+    //         Err((None, err)) => Err(err).expect("cannot access native cert store"),
+    //     };
+    //     if config.root_store.is_empty() {
+    //         panic!("no CA certificates found");
+    //     }
+    //     Self::build(config)
+    // }
 
     /// Construct a new `HttpsConnector` using the `webpki_roots`
     #[cfg(feature = "webpki-roots")]

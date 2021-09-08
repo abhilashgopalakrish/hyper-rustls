@@ -13,10 +13,12 @@ repository = "https://github.com/ctz/hyper-rustls"
 log = "0.4.4"
 ct-logs = { version = "^0.8", optional = true }
 hyper = { version = "0.14", default-features = false, features = ["client", "http1"] }
-rustls = "0.19"
+# rustls = "0.19"
+rustls = {path="/Users/amit/rustls/rustls"}
 rustls-native-certs = { version = "0.5.0", optional = true }
 tokio = "1.0"
-tokio-rustls = "0.22"
+# tokio-rustls = "0.22"
+tokio-rustls = {path="/Users/amit/tls/tokio-rustls"}
 webpki = "0.21.0"
 webpki-roots = { version = "0.21", optional = true }
 
